@@ -5,5 +5,6 @@
 .env
 .venv
 
-# Exclude dir's
+# Exclude files and dir's
 notes.txt
+os_check.py

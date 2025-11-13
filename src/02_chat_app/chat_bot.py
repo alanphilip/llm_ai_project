@@ -1,8 +1,9 @@
+
+# This python code uses gemini-2.5-flash model API to generate response based on user chat
+
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
-
-# This python code uses gemini-2.5-flash model API to generate text based on user prompt (text generation)
 
 # load environment variables from .env file
 load_dotenv()
@@ -14,24 +15,31 @@ except KeyError:
     print("Error: 'GEMINI_API_KEY' not found in environment variables.")
     exit()
 
+# 1. Define your system instruction
+system_instruction = "You are a helpful assistant."
+
 # Select Generative AI Model
 model = genai.GenerativeModel(
-    model_name='gemini-2.5-flash'
+    model_name='gemini-2.5-flash',
+    system_instruction=system_instruction
 )
 
-# Define the Prompt
-prompt = "Complete the following: hello excuse me, where is the.."
-
 # Define Generation Configuration
-# A value closer to 0 makes the output more deterministic and a value closer to 1 increases randomness
 generation_config = {
-    "temperature": 0.8,           # Controls randomness
-    "max_output_tokens": 800    # Sets max token limit
+    "max_output_tokens": 2000,
+    "temperature": 0.7, # Added a temperature for good measure
 }
+
+# Define the Prompt
+prompt = "how to cook ravioli?."
+
+contents = [
+    {'role': 'user', 'parts': [prompt]}
+]
 
 # Get the response and print in consol
 response = model.generate_content(
-    prompt,
+    contents,
     generation_config=generation_config
 )
 

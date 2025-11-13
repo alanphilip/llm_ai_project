@@ -1,0 +1,9 @@
+# Exclude intellij files
+.idea
+
+# Exclude environment files
+.env
+.venv
+
+# Exclude dir's
+notes.txt

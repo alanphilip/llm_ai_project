@@ -1,3 +1,9 @@
 openai
 python-dotenv
 google-generativeai
+numpy
+
+#matplotlib
+#plotly
+#scikit-learn
+#pandas
